@@ -8,10 +8,24 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <div>
+      <h1>Photo Gallery</h1>
+  
+      <input type="file" @change="uploadPhoto">
+      <div v-if="uploadedFileUrl">
+        <h3>Uploaded Photo:</h3>
+        <img :src="uploadedFileUrl" alt="Uploaded Photo" />
+      </div>
+  
+      <h2>Gallery</h2>
+      <div v-if="photos.length">
+        <div v-for="photo in photos" :key="photo">
+          <img :src="photo" alt="Photo" style="max-width: 300px; margin: 10px;" />
+        </div>
+      </div>
+    </div>
+
+    <script src="upload.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
